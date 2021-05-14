@@ -1,1 +1,14 @@
-nnn
+# First I make a polygon for downloading the city of Aalborg the fourth largest city of Denmark.
+# To do this I use https://extract.bbbike.org/
+
+import networkx as nx
+import osmnx as ox
+
+from shapely.geometry import Polygon
+
+poly_aalborg = Polygon([[9.855,56.998],[9.926,56.989],[9.982,57.01],[9.99,57.101],[9.942,57.101],[9.907,57.087],[9.862,57.046]])
+
+# Download network 
+g_aalborg = ox.graph_from_polygon(poly_aalborg, network_type="all")
+
+# Allright so how to save 
