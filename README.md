@@ -15,11 +15,7 @@ I have decided to use the package OSMnx for Python to get the roadnetwork from O
     analyze street networks, including calculating routes, projecting and visualizing networks, and calculating metric
     and topological measures (Boeing 2017). 
 
-
-
-
-
-
+I use Pycharm and it turns out that using conda is important for OSMnx. So my first go at installation failed because I was not aware of this. 
 
 
 Boeing, Geoff (2017) OSMnx: New methods for acquiring, constructing, analyzing, and visualizing complex street networks
