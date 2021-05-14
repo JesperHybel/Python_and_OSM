@@ -6,4 +6,21 @@ Since I will be learning Python on the fly I plan to use this repository to coll
 
 I am assuming that travel demand takes the form of someone wanting to go from A to B. Given the desire to go from A to B a routing problem has to be solved to answer: How to get from A to B by travelling along the roads of the network? Naturally, this will depend on the mode of transportation be it by car, public transportation, bike or walking.
 
-I have decided to use the package OSMnx for Python to get the roadnetwork from OSM. 
+I have decided to use the package OSMnx for Python to get the roadnetwork from OSM. I have chosen OSMnx because it is well-documented and because is has automated algorithmic correction of network topology. Specifically,  
+
+    OSMnx contributes ﬁve signiﬁcant capabilities for researchers and practitioners: ﬁrst, the automated
+    downloading of political boundaries and building footprints; second, the tailored and automated downloading
+    and constructing of street network data from OpenStreetMap; third, the algorithmic correction of network topol-
+    ogy; fourth, the ability to save street networks to disk as shapeﬁles, GraphML, or SVG ﬁles; and ﬁfth, the ability to
+    analyze street networks, including calculating routes, projecting and visualizing networks, and calculating metric
+    and topological measures (Boeing 2017). 
+
+
+
+
+
+
+
+
+Boeing, Geoff (2017) OSMnx: New methods for acquiring, constructing, analyzing, and visualizing complex street networks
+Computers, Environment and Urban Systems 65 pp. 126–139
