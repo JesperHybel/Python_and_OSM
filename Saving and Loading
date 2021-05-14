@@ -1,3 +1,26 @@
+# I need to make sure I can also read into R. 
+# So I could choose to save as shapefile. However, apparently some people are not to impressed by the shapefile:
+
+# Barry Rowlingson b.rowlingson at lancaster.ac.uk
+# Wed Jul 13 19:44:28 CEST 2016
+
+# [...] the agency from which I got the data has been enlightened
+# enough not to use the clunky, outdated, and limited "shapefile" format
+# and has released the data as a modern, OGC-standard GeoPackage. My
+# variables have long names, my metadata is stored with my data, and its
+# all in one file instead of six. [...]
+
+# Shapefiles are an awful, awful format which Esri didn't think people
+# would actually use. They should not be encouraged. [...] 
+
+# Barry
+
+# Also author of OSMnx package Geoff Boeing says:
+# save graph as a geopackage
+# you can similarly save it as a shapefile, if you prefer obsolete formats
+# http://jsta.github.io/2016/07/14/geopackage-r.html
+
+# Lets do this:
 # First I make a polygon for downloading the city of Aalborg the fourth largest city of Denmark.
 # To do this I use https://extract.bbbike.org/
 
@@ -10,5 +33,10 @@ poly_aalborg = Polygon([[9.855,56.998],[9.926,56.989],[9.982,57.01],[9.99,57.101
 
 # Download network 
 g_aalborg = ox.graph_from_polygon(poly_aalborg, network_type="all")
+# Save network in geopackage format
+ox.save_graph_geopackage(g_aalborg, filepath="./data/aalborg_network_all.gpkg")
+# I also like to do a plot
+fig, ax = ox.plot_graph(g_aalborg, figsize=(10, 10), node_size=0, edge_color="w", edge_linewidth=0.2)
 
-# Allright so how to save 
+
+
