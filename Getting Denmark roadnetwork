@@ -1,2 +1,16 @@
-When downloading from OSM it is very common to a bounding box. However, I prefer to use a user specified Polygon. To get my polygon I use BBBike.org (https://extract.bbbike.org/).
-I describe how here (https://rpubs.com/JesperHybel/677164). However, when the extract from BBBike.org has been created it posts the coordinates of the polygon 
+
+import networkx as nx
+import osmnx as ox
+
+from shapely.geometry import Polygon
+
+
+G = ox.graph_from_polygon(Polygon([[8.237,54.765],[10.119,54.696],[11.034,54.626],[11.85,54.377],
+	[12.579,54.689],[12.716,55.051],[12.787,55.726],[12.688,55.935],
+	[12.595,56.103],[11.56,56.263],[12.117,56.683],[10.55,58.045],
+	[8.13,57.263],[7.446,56.074]]), network_type="drive_service")
+
+fig, ax = ox.plot_graph(G, figsize=(10, 10), node_size=0, edge_color="y", edge_linewidth=0.2)
+
+ox.save_graph_geopackage(G, filepath="./data/denmark_drive_network.gpkg")
+ox.save_graphml(G, filepath="./data/denmark_drive_network.graphml")
