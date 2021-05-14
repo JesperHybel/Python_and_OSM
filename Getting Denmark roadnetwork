@@ -1,16 +1,21 @@
 
+# import packages
 import networkx as nx
 import osmnx as ox
 
+# and from shapely the polygon type
 from shapely.geometry import Polygon
 
-
+# Get the graph, takes some time. The network is drive and the polygon is a polygon very roughly selecting Denmark
+# geographically.
 G = ox.graph_from_polygon(Polygon([[8.237,54.765],[10.119,54.696],[11.034,54.626],[11.85,54.377],
 	[12.579,54.689],[12.716,55.051],[12.787,55.726],[12.688,55.935],
 	[12.595,56.103],[11.56,56.263],[12.117,56.683],[10.55,58.045],
 	[8.13,57.263],[7.446,56.074]]), network_type="drive_service")
 
+# plotting is good as a check on how the result looks ..
 fig, ax = ox.plot_graph(G, figsize=(10, 10), node_size=0, edge_color="y", edge_linewidth=0.2)
 
+# I save it for later use since after all it took some time to download...
 ox.save_graph_geopackage(G, filepath="./data/denmark_drive_network.gpkg")
 ox.save_graphml(G, filepath="./data/denmark_drive_network.graphml")
