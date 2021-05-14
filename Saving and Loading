@@ -39,4 +39,42 @@ ox.save_graph_geopackage(g_aalborg, filepath="./data/aalborg_network_all.gpkg")
 fig, ax = ox.plot_graph(g_aalborg, figsize=(10, 10), node_size=0, edge_color="w", edge_linewidth=0.2)
 
 
+# I now change from Python to R and try to load the .gpkg file into R following instructions from here 
+# http://jsta.github.io/2016/07/14/geopackage-r.html
+# Another option is to use the package sf (which I think is a better option because I believe it is more up to date)
+# https://ryanpeek.org/mapping-in-R-workshop/02_import_export_gpkg.html
+
+	path_data <- "C://Users//np83zg//PycharmProjects//pythonProject2//data"
+	setwd(path_data)
+	dir()
+
+	library(sf)
+	st_layers("aalborg_network_all.gpkg")
+	# Driver: GPKG 
+	# Available layers:
+  	# layer_name geometry_type features fields
+	# 1      nodes         Point    18584      6
+	# 2      edges   Line String    25642     19
+
+	# Two layers are available the nodes and edges of network graph
+	# Try to read both ... it reads only first layer
+	st_read("aalborg_network_all.gpkg")
+
+	aalborg_nodes <- st_read("aalborg_network_all.gpkg",layer="nodes")
+	aalborg_edges <- st_read("aalborg_network_all.gpkg",layer="edges")
+
+	# inspect data
+	head(aalborg_nodes)
+	head(aalborg_edges)
+	
+	# plot nodes and edges
+	library(tmap)
+	qtm(aalborg_nodes)
+	qtm(aalborg_edges)
+	
+  
+  
+  
+  
+  
 
